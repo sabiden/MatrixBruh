@@ -118,6 +118,17 @@ public class Matrix {
 	matrix[r2] = savRow;
     }
 
+    /*
+    public boolean isFull()
+	public Object[] getRow( int r )
+	public Object[] setRow( int r, Object[] newRow )
+	public Object[] getCol( int c )
+	public Object[] setCol( int c, Object[] newCol )
+	public void transpose()
+	public boolean contains( Object o )
+    */
+
+
 
     //main method for testing
     public static void main( String[] args ) {
