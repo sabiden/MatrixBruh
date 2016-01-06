@@ -1,7 +1,7 @@
-//Shaik Abiden
+//Team The Bruhchowskis - Shaik Abiden, Jason Mohabir 
 //APCS1 pd10
-//HW53 -- Red vs Blue
-//2016 - 1 - 5
+//HW55 -- Don’t Think You Are. Know You Are.
+//2016-01-06
 
 /*====================================
   class Matrix -- models a square matrix
@@ -12,25 +12,25 @@
   ====================================*/ 
 
 public class Matrix {
-
+    
     //constant for default matrix size
     private final static int DEFAULT_SIZE = 2;
-
+    
     private Object[][] matrix;
-
-
+    
+    
     //default constructor intializes a DEFAULT_SIZE*DEFAULT_SIZE matrix
     public Matrix() {
 	matrix = new Object[DEFAULT_SIZE][DEFAULT_SIZE];
     }
-
+    
 
     //constructor intializes an a*a matrix
     public Matrix( int a ) {
 	matrix = new Object[a][a];
     }
-
-
+    
+    
     //return size of this matrix, where size is 1 dimension
     private int size() {
 	return matrix.length * matrix.length;
@@ -53,9 +53,9 @@ public class Matrix {
     //return old value
     private Object set( int r, int c, Object newVal ) {
 	//Save the old val, change it with the newVal, return the old val
-	Object old = get(r,c);
+	Object ret = get(r,c);
 	matrix[r][c] = newVal;
-	return old;
+	return ret;
     }
 
 
@@ -81,15 +81,11 @@ public class Matrix {
 	//Check if rightSide is a matrix, then check the toStrings to see if they the same
 	if (rightSide instanceof Matrix){
 	    if (toString().equals(rightSide.toString())){
-		    return true;
+		return true;
 	    }
-	    else{
-		return false;
-	    }
+	    else { return false; }
 	}
-	else{
-	    return false;
-	}
+	else{ return false; }
     }
 
 
@@ -100,8 +96,8 @@ public class Matrix {
     public void swapColumns( int c1, int c2  ) {
 	//Go to each row and switch whatever's at c1 index with what's at c2 index
 	for (int i = 0; i < matrix.length; i++){
-	    Object savVal = matrix[i][c1];
-	    matrix[i][c1] = matrix[i][c2];
+	    Object savVal = get(i,c1);
+	    matrix[i][c1] = get(i,c2);
 	    matrix[i][c2] = savVal;
 	}
     }
@@ -118,10 +114,8 @@ public class Matrix {
 	matrix[r2] = savRow;
     }
 
-    /*
-      public boolean isFull()
-            public boolean contains( Object o )
-    */
+
+    //HW55 Methods
 
 
     //returns Object[] of r row
@@ -141,7 +135,7 @@ public class Matrix {
     public Object[] getCol( int c ){
 	Object[] ret = matrix[c];
 	for (int r = 0; r < matrix.length; r++){
-	    ret[r] = matrix.get(r,c); 
+	    ret[r] = get(r,c); 
 	}
 	return ret;
     }
@@ -151,10 +145,10 @@ public class Matrix {
     public Object[] setCol( int c, Object[] newCol ){
 	Object[] ret = matrix[c];
 	for (int r = 0; r < matrix.length; r++){
-	    ret[r] = matrix.get(r,c);;
+	    ret[r] = get(r,c);
 	    matrix[r][c] = newCol[r];
 	}
-	return ret;
+	    return ret;
     }
     
     //sets matrix as tranpose
@@ -163,9 +157,30 @@ public class Matrix {
 	Object[][] trans = new Object[matrix.length][matrix.length];
 	for (int r = 0; r < matrix.length; r++)
 	    for (int c = 0; c < matrix[r].length ; c++)
-		trans[c][r] = matrix.get(r,c);
+		trans[c][r] = get(r,c);
 	matrix = trans;	
     }
+
+    //check every matrix and return if Object o is present
+    public boolean contains( Object o ){
+	for (Object[] r: matrix)
+	    for (Object c: r){
+		if ( o.equals(c) ) return true;}
+	return false;
+    }
+
+    //check every matrix index for object
+    public boolean isFull(){
+	boolean retBool = false;
+	for (int r = 0; r < matrix.length; r++){
+	    for (int c = 0; c < matrix[r].length; c++){
+		if (isEmpty(r,c)){return false;}
+	    }
+	}
+	return true;
+	
+    }
+
 
 
     //main method for testing
