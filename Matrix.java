@@ -138,6 +138,20 @@ public class Matrix {
 	return savVal;
     }
 
+  
+    public Object[] getCol( int c ){
+	Object[] ret = matrix[r];
+	
+	for (int i = 0; i < matrix.length; i++){
+	    ret.add(matrix.get(i,c)); 
+	}
+	
+	
+	return ret;
+	
+	
+    }
+
 
     //main method for testing
     public static void main( String[] args ) {
