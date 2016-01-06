@@ -128,6 +128,15 @@ public class Matrix {
 	public boolean contains( Object o )
     */
 
+    public Object[] getRow( int r ){
+	return matrix[r];
+    }
+
+    public Object[] setRow( int r, Object[] newRow ){
+	Object[] savVal = matrix[r];
+	matrix[r] = newRow;
+	return savVal;
+    }
 
 
     //main method for testing
