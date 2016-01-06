@@ -119,37 +119,52 @@ public class Matrix {
     }
 
     /*
-    public boolean isFull()
-	public Object[] getRow( int r )
-	public Object[] setRow( int r, Object[] newRow )
-	public Object[] getCol( int c )
-	public Object[] setCol( int c, Object[] newCol )
-	public void transpose()
-	public boolean contains( Object o )
+      public boolean isFull()
+            public boolean contains( Object o )
     */
 
+
+    //returns Object[] of r row
     public Object[] getRow( int r ){
 	return matrix[r];
     }
 
+    //sets r row as Object[] newRow
+    //returns old row
     public Object[] setRow( int r, Object[] newRow ){
-	Object[] savVal = matrix[r];
+	Object[] ret = matrix[r];
 	matrix[r] = newRow;
-	return savVal;
+	return ret;
     }
 
-  
+    // returns Object[] of c column
     public Object[] getCol( int c ){
-	Object[] ret = matrix[r];
-	
-	for (int i = 0; i < matrix.length; i++){
-	    ret.add(matrix.get(i,c)); 
+	Object[] ret = matrix[c];
+	for (int r = 0; r < matrix.length; r++){
+	    ret[r] = matrix.get(r,c); 
 	}
-	
-	
 	return ret;
-	
-	
+    }
+    
+    //sets c column as Object[] newCol
+    //returns old column
+    public Object[] setCol( int c, Object[] newCol ){
+	Object[] ret = matrix[c];
+	for (int r = 0; r < matrix.length; r++){
+	    ret[r] = matrix.get(r,c);;
+	    matrix[r][c] = newCol[r];
+	}
+	return ret;
+    }
+    
+    //sets matrix as tranpose
+    //every value (r,c) swap with new value (c,r)
+    public void transpose(){
+	Object[][] trans = new Object[matrix.length][matrix.length];
+	for (int r = 0; r < matrix.length; r++)
+	    for (int c = 0; c < matrix[r].length ; c++)
+		trans[c][r] = matrix.get(r,c);
+	matrix = trans;	
     }
 
 
