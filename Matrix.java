@@ -10,6 +10,7 @@
         Categorize runtime of each. 
         Test in your main method.
   ====================================*/ 
+import java.util.Arrays;
 
 public class Matrix {
     
@@ -126,14 +127,16 @@ public class Matrix {
     //sets r row as Object[] newRow
     //returns old row
     public Object[] setRow( int r, Object[] newRow ){
-	Object[] ret = matrix[r];
-	matrix[r] = newRow;
+	Object[] ret = getRow(r);
+	for (int c = 0; c < matrix[r].length; c++){
+	    matrix[r][c] = newRow[c];
+	}   
 	return ret;
     }
 
     // returns Object[] of c column
     public Object[] getCol( int c ){
-	Object[] ret = matrix[c];
+	Object[] ret = new Object[matrix.length];
 	for (int r = 0; r < matrix.length; r++){
 	    ret[r] = get(r,c); 
 	}
@@ -143,12 +146,10 @@ public class Matrix {
     //sets c column as Object[] newCol
     //returns old column
     public Object[] setCol( int c, Object[] newCol ){
-	Object[] ret = matrix[c];
 	for (int r = 0; r < matrix.length; r++){
-	    ret[r] = get(r,c);
 	    matrix[r][c] = newCol[r];
 	}
-	    return ret;
+	return getCol(c);
     }
     
     //sets matrix as tranpose
@@ -163,9 +164,13 @@ public class Matrix {
 
     //check every matrix and return if Object o is present
     public boolean contains( Object o ){
-	for (Object[] r: matrix)
+	for (Object[] r: matrix){
 	    for (Object c: r){
-		if ( o.equals(c) ) return true;}
+		if ( o.equals(c) ){
+		    return true;
+		}
+	    }
+	}
 	return false;
     }
 
@@ -244,6 +249,63 @@ public class Matrix {
 	System.out.println("\nAfter switch:\n");
 	jill.swapColumns(0,2);
 	System.out.print(jill);
+
+
+	System.out.println("\n\nHW 55 New Methods:");
+	System.out.println("Here is Jill again:\n");
+	System.out.println(jill);
+	System.out.println("\nHere is Jill's 2nd Row:\n");
+	System.out.println(Arrays.toString(jill.getRow(1)));
+	System.out.println("\nHere is Jill's 2nd Column:\n");
+	System.out.println(Arrays.toString(jill.getCol(1)));
+	System.out.println("\n\n\nCreating a new Array for the set Functions\nHere is an array of OtherFruits:\n");
+	Object[] OtherFruits = new Object[3];
+	OtherFruits[0] ="Lemon";
+	OtherFruits[1] ="Gourd";
+	OtherFruits[2] ="Tomato";
+	System.out.println(Arrays.toString(OtherFruits));
+	System.out.println("Setting Jill's 1st row to OtherFruits:\n");
+	jill.setRow(0,OtherFruits);
+	System.out.println(jill);
+	System.out.println(Arrays.toString(OtherFruits));
+	System.out.println("Setting Jill's 2nd row to OtherFruits:\n");
+	jill.setRow(1,OtherFruits);
+	System.out.println(jill);
+	System.out.println("Setting Jill's 3rd row to OtherFruits:\n");
+	jill.setRow(2,OtherFruits);
+	System.out.println(jill);
+	System.out.println("Setting Jill's 1st column to OtherFruits:\n");
+	jill.setCol(0,OtherFruits);
+	System.out.println(jill);
+	System.out.println(Arrays.toString(OtherFruits));
+	System.out.println("Setting Jill's 2nd column to OtherFruits:\n");
+	jill.setCol(1,OtherFruits);
+	System.out.println(jill);
+	System.out.println("Setting Jill's 3rd column to OtherFruits:\n");
+	jill.setCol(2,OtherFruits);
+	System.out.println(jill);
+	System.out.println("Checking if Jill now contains Lemon:");
+	System.out.println(jill.contains("Lemon"));
+	System.out.println("Checking if Jill now contains Apple:");
+	System.out.println(jill.contains("Apple"));
+	System.out.println("\n\nChecking if Jill is full of values:");
+	System.out.println(jill.isFull());
+	System.out.println("\n\nChecking if Bob, who we didn't give and values, is full of values:");
+	System.out.println(bob.isFull());
+	System.out.println(jill);
+	System.out.println("\n\nResetting Jill's values to more diverse fruits:\n");
+	jill.set(0,0,"Mango");
+	jill.set(0,1,"Bannana");
+	jill.set(0,2,"Orange");
+	jill.set(1,0,"Apple");
+	jill.set(1,1,"Grape");
+	jill.set(1,2,"Kiwi");
+	jill.set(2,0,"Lime");
+	jill.set(2,1,"Olive");
+	jill.set(2,2,"Potato");
+	System.out.println(jill);
+	jill.transpose();
+	System.out.println(jill);
 	System.out.print("\n\nLooks good to me!\n\n");
 	System.out.println("TESTING COMPLETE");
     }
