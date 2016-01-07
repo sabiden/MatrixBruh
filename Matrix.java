@@ -250,8 +250,7 @@ public class Matrix {
 	jill.swapColumns(0,2);
 	System.out.print(jill);
 
-
-	System.out.println("\n\nHW 55 New Methods:");
+	System.out.println("\n\n\n\nHW 55 New Methods:\n\n");
 	System.out.println("Here is Jill again:\n");
 	System.out.println(jill);
 	System.out.println("\nHere is Jill's 2nd Row:\n");
@@ -264,24 +263,24 @@ public class Matrix {
 	OtherFruits[1] ="Gourd";
 	OtherFruits[2] ="Tomato";
 	System.out.println(Arrays.toString(OtherFruits));
-	System.out.println("Setting Jill's 1st row to OtherFruits:\n");
+	System.out.println("\nSetting Jill's 1st row to OtherFruits:\n");
 	jill.setRow(0,OtherFruits);
 	System.out.println(jill);
 	System.out.println(Arrays.toString(OtherFruits));
-	System.out.println("Setting Jill's 2nd row to OtherFruits:\n");
+	System.out.println("\nSetting Jill's 2nd row to OtherFruits:\n");
 	jill.setRow(1,OtherFruits);
 	System.out.println(jill);
-	System.out.println("Setting Jill's 3rd row to OtherFruits:\n");
+	System.out.println("\nSetting Jill's 3rd row to OtherFruits:\n");
 	jill.setRow(2,OtherFruits);
 	System.out.println(jill);
-	System.out.println("Setting Jill's 1st column to OtherFruits:\n");
+	System.out.println("\nSetting Jill's 1st column to OtherFruits:\n");
 	jill.setCol(0,OtherFruits);
 	System.out.println(jill);
 	System.out.println(Arrays.toString(OtherFruits));
-	System.out.println("Setting Jill's 2nd column to OtherFruits:\n");
+	System.out.println("\nSetting Jill's 2nd column to OtherFruits:\n");
 	jill.setCol(1,OtherFruits);
 	System.out.println(jill);
-	System.out.println("Setting Jill's 3rd column to OtherFruits:\n");
+	System.out.println("\nSetting Jill's 3rd column to OtherFruits:\n");
 	jill.setCol(2,OtherFruits);
 	System.out.println(jill);
 	System.out.println("Checking if Jill now contains Lemon:");
@@ -292,7 +291,6 @@ public class Matrix {
 	System.out.println(jill.isFull());
 	System.out.println("\n\nChecking if Bob, who we didn't give and values, is full of values:");
 	System.out.println(bob.isFull());
-	System.out.println(jill);
 	System.out.println("\n\nResetting Jill's values to more diverse fruits:\n");
 	jill.set(0,0,"Mango");
 	jill.set(0,1,"Bannana");
@@ -304,6 +302,7 @@ public class Matrix {
 	jill.set(2,1,"Olive");
 	jill.set(2,2,"Potato");
 	System.out.println(jill);
+	System.out.print("\n\nFinally we Transpose:\n\n");
 	jill.transpose();
 	System.out.println(jill);
 	System.out.print("\n\nLooks good to me!\n\n");
